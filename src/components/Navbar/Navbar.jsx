@@ -4,7 +4,7 @@ import arrow_icon from "../../assets/Images/arrow_icon.png";
 import { CoinContext } from "../../context/CoinContext";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
-const Navbar = () => {
+const Navbar = ({ setShowLogin }) => {
   const { setCurrency } = useContext(CoinContext);
 
   const currencyHandler = (e) => {
@@ -39,8 +39,12 @@ const Navbar = () => {
       </ul>
 
       <div className="nav-right">
-        <button>
-         ورود / ثبت نام <img src={arrow_icon} alt="" />
+        <button
+          onClick={() => {
+            setShowLogin(true);
+          }}
+        >
+          ورود / ثبت نام <img src={arrow_icon} alt="" />
         </button>
         <select onChange={currencyHandler}>
           <option value="usd">USD</option>
